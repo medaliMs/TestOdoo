@@ -1,0 +1,63 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="article_tree">
+      <field name="name">vente.article
+      </field>
+      <field name="model">vente.article</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="price"/>
+          <field name="stock"/>
+          <field name="description"/>
+        </tree>
+      </field>
+    </record>
+
+
+            <record model="ir.ui.view" id="article_form">
+            <field name="name">vente.article</field>
+            <field name="model">vente.article</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="price"/>
+                            <field name="stock"/>
+                          <field name="description"/>
+                        </group>
+                        <notebook>
+                        <page string="liste of commands">
+                            <field name="command_ids"/>
+                        </page>
+
+                    </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="vente_article_action">
+      <field name="name">articles</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">vente.article</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- server action to the one above -->
+
+
+    <!-- Top menu item -->
+    <menuitem name="Vente" id="vente_root"/>
+    <!-- menu categories -->
+    <menuitem name="Articles" id="vente_article_root" parent="vente_root"/>
+<!--    <menuitem name="Menu 2" id="vente.menu_2" parent="vente.menu_root"/>-->
+    <!-- actions -->
+    <menuitem name="Articles" id="vente_article" parent="vente_article_root"
+              action="vente_article_action"/>
+
+  </data>
+</odoo>

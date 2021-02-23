@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_vente_article,access.vente.article,model_vente_article,,1,1,1,1
+access_vente_client,access.vente.client,model_vente_client,,1,1,1,1
+access_vente_command,access.vente.command,model_vente_command,,1,1,1,1

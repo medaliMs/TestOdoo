@@ -1,0 +1,91 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <record model="ir.ui.view" id="command_tree">
+            <field name="name">vente.command</field>
+            <field name="model">vente.command</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="code"/>
+                    <field name="totale"/>
+                    <field name="state"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="command_form">
+            <field name="name">vente.command</field>
+            <field name="model">vente.command</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="next_level" type="object" class="oe_highight" string="next level"></button>
+                        <field name="state" widget="statusbar" nolabel="1"></field>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="code"/>
+                                <field name="totale"/>
+
+                            </group>
+                            <group>
+                                <field name="client_id"/>
+                                <!--                            <field name="state"/>-->
+
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="liste of articles">
+                                <field name="article_ids"/>
+                            </page>
+
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+<!--<record model="ir.rule" id="no_edit_in_done_state">-->
+
+<!--           <field name="name">No Edit in done state</field>-->
+
+<!--            <field name="model_id" ref="vente.command_form"/>-->
+
+<!--           <field name="groups" eval="[(4, ref('base.group_user'))]"/>-->
+
+<!--           <field eval="0" name="perm_unlink"/>-->
+
+<!--           <field eval="0" name="perm_write"/>-->
+
+<!--           <field eval="1" name="perm_read"/>-->
+
+<!--           <field eval="0" name="perm_create"/>-->
+
+<!--           <field name="domain_force">[('state', '=', 'done'])]</field>-->
+
+<!--   </record>-->
+
+        <!-- actions opening views on models -->
+        <record model="ir.actions.act_window" id="vente_command_action">
+            <field name="name">commands</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">vente.command</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- server action to the one above -->
+
+
+        <!-- Top menu item -->
+        <menuitem name="Vente" id="vente_root"/>
+        <!-- menu categories -->
+        <menuitem name="commands" id="vente_command_root" parent="vente_root"/>
+        <!--    <menuitem name="Menu 2" id="vente.menu_2" parent="vente.menu_root"/>-->
+        <!-- actions -->
+        <menuitem name="Commands" id="vente_command" parent="vente_command_root"
+                  action="vente_command_action"/>
+
+    </data>
+</odoo>

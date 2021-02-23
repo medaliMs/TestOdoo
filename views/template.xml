@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="commands_page" name="commands">
+        <t t-call="website.layout">
+            <div class="container">
+                <br/>
+                <br/>
+
+                <table style="width:100%">
+                    <tr>
+                        <th>code</th>
+                        <th>totale</th>
+                        <th>client</th>
+                    </tr>
+            <t t-foreach="commands" t-as="command">
+                    <tr>
+
+                        <td>
+                            <a t-att-href="'/vente/command/details/%s' % slug(command)" itemprop="url">
+                            <t t-esc="command.code"/>
+                            </a>
+                        </td>
+                        <td><t t-esc="command.totale"/></td>
+                        <td><t t-esc="command.client_id.name"/></td>
+                    </tr>
+
+</t>
+                </table>
+
+            </div>
+        </t>
+    </template>
+    <template id="articles_page" name="articles">
+        <t t-call="website.layout">
+            <div class="container">
+                <br/>
+                <br/>
+                <table style="width:100%">
+                    <tr>
+                        <th>name</th>
+                        <th>price</th>
+                        <th>stock</th>
+                        <th>description</th>
+
+                    </tr>
+                                    <t t-foreach="articles" t-as="article">
+
+                    <tr>
+
+                        <td>
+                            <a t-att-href="'/vente/article/details/%s' % slug(article)" itemprop="url">
+                            <t t-esc="article.name"/>
+                            </a>
+                        </td>
+
+                        <td><t t-esc="article.price"/></td>
+                        <td><t t-esc="article.stock"/></td>
+                        <td><t t-esc="article.description"/></td>
+
+                    </tr>
+
+   </t>
+                </table>
+
+            </div>
+        </t>
+    </template>
+    <template id="clients_page" name="clients">
+        <t t-call="website.layout">
+            <div class="container">
+                <br/>
+                <br/>
+
+                <table style="width:100%">
+                    <tr>
+                        <th>name</th>
+                        <th>age</th>
+                        <th>email</th>
+                        <th>commands</th>
+
+                    </tr>
+                      <t t-foreach="clients" t-as="client">
+                    <tr>
+                        <td>
+                             <a t-att-href="'/vente/client/details/%s' % slug(client)" itemprop="url">
+                            <t t-esc="client.name"/>
+                             </a>
+                        </td>
+                        <td><t t-esc="client.age"/></td>
+                        <td><t t-esc="client.email"/></td>
+                        <td><t t-foreach="client.command_ids" t-as="command">
+                        <t t-esc="command.code"/>
+                        </t>
+                        </td>
+<!--                                                <td><t t-esc="client.command_ids.code"/></td>-->
+
+                    </tr>
+
+                     </t>
+                </table>
+            </div>
+                </t>
+
+    </template>
+    <template id="article_details" name="article">
+        <t t-call="website.layout">
+            <a href="/vente/article">Back to Articles</a>
+
+                           <h1>Price: </h1><h4><t t-esc="article.price"/></h4>
+                        <h1>Is on stock: </h1><h4><t t-esc="article.stock"/></h4>
+                        <h1>Description: </h1><h4><t t-esc="article.description"/></h4>
+        </t>
+
+    </template>
+    <template id="client_details" name="client">
+        <t t-call="website.layout">
+            <a href="/vente/client">Back to clients</a>
+
+                           <h1>Name: </h1><h4><t t-esc="client.name"/></h4>
+                        <h1>Age: </h1><h4><t t-esc="client.age"/></h4>
+                        <h1>Email: </h1><h4><t t-esc="client.email"/></h4>
+                <h1>Commands: </h1>
+            <t t-foreach="client.command_ids" t-as="command">
+            <h4><t t-esc="command.code"/></h4>
+            </t>
+
+        </t>
+
+    </template>
+        <template id="command_details" name="command">
+        <t t-call="website.layout">
+            <a href="/vente/command">Back to commands</a>
+
+                           <h1>Code: </h1><h4><t t-esc="command.code"/></h4>
+                        <h1>Client: </h1><h4><t t-esc="command.client_id.name"/></h4>
+                        <h1>Totale: </h1><h4><t t-esc="command.totale"/></h4>
+        </t>
+
+    </template>
+</odoo>
