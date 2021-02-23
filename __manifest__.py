@@ -29,6 +29,7 @@
         'views/command.xml',
         'views/client.xml',
         'views/template.xml',
+        'views/template_form.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

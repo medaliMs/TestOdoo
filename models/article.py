@@ -10,7 +10,7 @@ class Article(models.Model):
 
     name = fields.Char(string='Name', required=True)
     price = fields.Integer(string='Price', required=True)
-    stock = fields.Boolean(string='Stock', required=True)
+    stock = fields.Boolean(string='Stock', default=True)
     description = fields.Text(string='Description')
     command_ids = fields.Many2many(comodel_name='vente.command', relation='table_name', column1='name', column2='code',
                                    readonly=True)

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="article_form" name="Create article">
+        <t t-call="website.layout">
+            <div class="container">
+                <form role="form" action="/create/article" method="POST">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <label>Name</label>
+                    <input type="text" name="name" t-att-value="name" id="name"
+                           placeholder="Name" required="required"/>
+                    <label>Price</label>
+                    <input type="text" name="price" t-att-value="price" id="price"
+                           placeholder="Price" required="required"/>
+                    <button type="submit">Create Article</button>
+                </form>
+            </div>
+        </t>
+    </template>
+    <template id="article_done" name="article_done">
+        <t t-call="website.layout">
+            <div class="container">
+                <h1>Article created</h1>
+                <br/>
+                <br/>
+                <a href="/vente/article">Back to Articles</a>
+
+            </div>
+        </t>
+    </template>
+</odoo>

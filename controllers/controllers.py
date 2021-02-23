@@ -31,10 +31,32 @@ class Article(http.Controller):
             'articles': articles
         })
 
+    @http.route('/article_form', type="http", auth="public", website=True)
+    def article_form(self,**kw):
+        return http.request.render('vente.article_form', {})
+
+    # @http.route('/article_delete', type="http", auth="public", website=True)
+    # def article_form(self,**kw):
+    #     article = request.env['vente.article'].sudo().search(kw)
+    #     request.env['vente.article'].sudo().unlink(article)
+    #     return http.request.render('vente.article_form', {})
+
+    @http.route('/create/article', type="http", auth="public", website=True)
+    def create_article(self,**kw):
+        request.env['vente.article'].sudo().create(kw)
+        return request.render("vente.article_done",{})
+
     @http.route(['/vente/article/details/<model("vente.article"):article>'], type='http', auth='public', website=True)
     def article(self, article):
         values = {'article': article}
         return request.render("vente.article_details", values)
+
+    # @http.route(['/vente/article/delete/<model("vente.article"):article>'], type='http', auth='public', website=True)
+    # def article(self, article):
+    #     request.env['vente.article'].sudo().unlink()
+    #     # values = {'article': article}
+    #     # return request.render("vente.article_details", values)
+    #     return request.redirect('/vente/article')
 
 
 class Client(http.Controller):
