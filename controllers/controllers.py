@@ -52,12 +52,32 @@ class Article(http.Controller):
         return request.render("vente.article_details", values)
 
     @http.route(['/vente/article/delete/<model("vente.article"):article>'], type='http', auth='public', website=True)
-    def delteArticle(self, article):
+    def delete_article(self, article):
         # request.env['vente.article'].sudo().unlink()
         article.unlink()
         # values = {'article': article}
         # return request.render("vente.article_details", values)
         return request.redirect('/vente/article')
+
+    @http.route(['/vente/article/edit/<model("vente.article"):article>'], type='http', auth='public', website=True)
+    def edit_article(self, article):
+        # request.env['vente.article'].sudo().unlink()
+        # article.unlink()
+        values = {'article': article}
+        return request.render("vente.article_edit", values)
+        # return request.redirect('/vente/article')
+
+    @http.route('/edit/article/', type="http", auth="public", website=True)
+    def update_article(self, **kw):
+        print('kw = ', kw)
+        article = request.env['vente.article'].sudo().browse(kw['id'])
+        # article = request.env['vente.article'].sudo().search(['id', '=', kw['id']])
+        print('article=  ',article,'of type  =   ',type(article))
+
+        value={'name': kw['name'], 'price': kw['price']}
+        # print('value = ',value)
+        article.write(value)
+        return request.redirect('/')
 
 
 class Client(http.Controller):

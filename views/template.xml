@@ -63,6 +63,9 @@
                                                 <a t-att-href="'/vente/article/delete/%s' % slug(article)" itemprop="url">
                             delete
                             </a>
+                                                                            <a t-att-href="'/vente/article/edit/%s' % slug(article)" itemprop="url">
+                            edit
+                            </a>
                         </td>
                     </tr>
 

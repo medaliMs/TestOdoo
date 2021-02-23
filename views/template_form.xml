@@ -27,4 +27,22 @@
             </div>
         </t>
     </template>
+    <template id="article_edit" name="article_edit">
+        <t t-call="website.layout">
+            <div class="container">
+                <form role="form" action="/edit/article/" method="POST">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <input type="hidden" t-att-value="article.id" name="id" id="id"/>
+                    <label>Name</label>
+                    <input type="text" name="name" t-att-value="article.name" id="name" value="article.name"
+                           required="required"/>
+                    <label>Price</label>
+                    <input type="text" name="price" t-att-value="article.price" id="price" value="article.price"
+                           required="required"/>
+                    <button type="submit">Update Article</button>
+                </form>
+
+            </div>
+        </t>
+    </template>
 </odoo>
