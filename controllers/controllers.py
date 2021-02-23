@@ -51,12 +51,13 @@ class Article(http.Controller):
         values = {'article': article}
         return request.render("vente.article_details", values)
 
-    # @http.route(['/vente/article/delete/<model("vente.article"):article>'], type='http', auth='public', website=True)
-    # def article(self, article):
-    #     request.env['vente.article'].sudo().unlink()
-    #     # values = {'article': article}
-    #     # return request.render("vente.article_details", values)
-    #     return request.redirect('/vente/article')
+    @http.route(['/vente/article/delete/<model("vente.article"):article>'], type='http', auth='public', website=True)
+    def delteArticle(self, article):
+        # request.env['vente.article'].sudo().unlink()
+        article.unlink()
+        # values = {'article': article}
+        # return request.render("vente.article_details", values)
+        return request.redirect('/vente/article')
 
 
 class Client(http.Controller):

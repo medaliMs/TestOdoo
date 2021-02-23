@@ -33,6 +33,8 @@
     <template id="articles_page" name="articles">
         <t t-call="website.layout">
             <div class="container">
+                            <a href="/article_form">Create New Article</a>
+
                 <br/>
                 <br/>
                 <table style="width:100%">
@@ -41,6 +43,7 @@
                         <th>price</th>
                         <th>stock</th>
                         <th>description</th>
+                        <th>action</th>
 
                     </tr>
                                     <t t-foreach="articles" t-as="article">
@@ -56,11 +59,13 @@
                         <td><t t-esc="article.price"/></td>
                         <td><t t-esc="article.stock"/></td>
                         <td><t t-esc="article.description"/></td>
-
+                        <td>
+                                                <a t-att-href="'/vente/article/delete/%s' % slug(article)" itemprop="url">
+                            delete
+                            </a>
+                        </td>
                     </tr>
-<!--                    <a t-att-href="'/vente/article/delete/%s' % slug(article)" itemprop="url">-->
-<!--                            <t t-esc="article.name"/>-->
-<!--                            </a>-->
+
 
    </t>
                 </table>
@@ -109,7 +114,6 @@
         <t t-call="website.layout">
             <a href="/vente/article">Back to Articles</a>
             <br/>
-            <a href="/article_form">Create New Article</a>
 
                            <h1>Price: </h1><h4><t t-esc="article.price"/></h4>
                         <h1>Is on stock: </h1><h4><t t-esc="article.stock"/></h4>
