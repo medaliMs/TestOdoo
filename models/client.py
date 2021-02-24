@@ -4,6 +4,10 @@ from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 
 
+class SaleOrder(models.Model):
+    _inherit = 'sale.order'
+    client_name = fields.Char(string='client name')
+
 class Client(models.Model):
     _name = 'vente.client'
     _description = 'vente.client'
@@ -27,6 +31,6 @@ class Client(models.Model):
             raise ValidationError('incorrect age')
 
     def unlink(self):
-        if len(self.command_ids)!=0:
+        if len(self.command_ids) != 0:
             raise ValidationError('user with commands cannot be deleted. delete your command first')
         return super(Client, self).unlink()

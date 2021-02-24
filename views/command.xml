@@ -20,8 +20,8 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button name="next_level" type="object" class="oe_highight" string="next level"></button>
-                        <field name="state" widget="statusbar" nolabel="1"></field>
+                        <button name="next_level" type="object" class="oe_highight" string="next level"/>
+                        <field name="state" widget="statusbar" nolabel="1"/>
                     </header>
                     <sheet>
                         <group>
