@@ -11,7 +11,7 @@ class SaleOrder(models.Model):
 class Client(models.Model):
     _name = 'vente.client'
     _description = 'vente.client'
-
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     name = fields.Char(string='Name', required=True)
     email = fields.Char(string='Email', required=True)
 
