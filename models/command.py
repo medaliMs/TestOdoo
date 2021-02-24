@@ -53,8 +53,7 @@ class Command(models.Model):
             self.state = 'progress'
         elif self.state == 'progress':
             self.state = 'done'
-        elif self.state == 'done':
-            raise UserError('command is done')
+
 
     # def write(self, vals):
     #     if any(state == 'done' for state in set(self.mapped('state'))):

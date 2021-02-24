@@ -20,7 +20,8 @@
             <field name="arch" type="xml">
                 <form>
                     <header>
-                        <button name="next_level" type="object" class="oe_highight" string="next level"/>
+                        <button name="next_level" type="object" class="oe_highight" string="next level" attrs="{'invisible':
+                                [('state', 'in', ['cancel', 'done'])]}"/>
                         <field name="state" widget="statusbar" nolabel="1"/>
                     </header>
                     <sheet>
@@ -47,25 +48,25 @@
             </field>
         </record>
 
-<!--<record model="ir.rule" id="no_edit_in_done_state">-->
+        <!--<record model="ir.rule" id="no_edit_in_done_state">-->
 
-<!--           <field name="name">No Edit in done state</field>-->
+        <!--           <field name="name">No Edit in done state</field>-->
 
-<!--            <field name="model_id" ref="vente.command_form"/>-->
+        <!--            <field name="model_id" ref="vente.command_form"/>-->
 
-<!--           <field name="groups" eval="[(4, ref('base.group_user'))]"/>-->
+        <!--           <field name="groups" eval="[(4, ref('base.group_user'))]"/>-->
 
-<!--           <field eval="0" name="perm_unlink"/>-->
+        <!--           <field eval="0" name="perm_unlink"/>-->
 
-<!--           <field eval="0" name="perm_write"/>-->
+        <!--           <field eval="0" name="perm_write"/>-->
 
-<!--           <field eval="1" name="perm_read"/>-->
+        <!--           <field eval="1" name="perm_read"/>-->
 
-<!--           <field eval="0" name="perm_create"/>-->
+        <!--           <field eval="0" name="perm_create"/>-->
 
-<!--           <field name="domain_force">[('state', '=', 'done'])]</field>-->
+        <!--           <field name="domain_force">[('state', '=', 'done'])]</field>-->
 
-<!--   </record>-->
+        <!--   </record>-->
 
         <!-- actions opening views on models -->
         <record model="ir.actions.act_window" id="vente_command_action">
