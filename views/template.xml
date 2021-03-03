@@ -146,7 +146,25 @@
                            <h1>Code: </h1><h4><t t-esc="command.code"/></h4>
                         <h1>Client: </h1><h4><t t-esc="command.client_id.name"/></h4>
                         <h1>Totale: </h1><h4><t t-esc="command.totale"/></h4>
+
+
         </t>
 
     </template>
+<!--  test owl  -->
+
+    <template id="test_owl">
+        <script src="/vente/static/src/js/owl.js"/>
+<script src="/vente/static/src/js/template.js" type="module"/>
+
+
+
+
+<!--        <script type="text/javascript" src="/vente/views/owl.cjs.js"></script>-->
+<!--                   -->
+<!--        <script type="text/javascript" src="/vente/views/template.js"></script>-->
+
+</template>
+
+<!-- end test owl    -->
 </odoo>
