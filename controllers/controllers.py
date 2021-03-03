@@ -18,8 +18,8 @@ class Command(http.Controller):
 
     @http.route('/test', auth='public', website=True)
     def index3(self, **kw):
-        # value = {'value' : 1}
-        return request.render("vente.test_owl", {})
+        value = {'value': 1}
+        return request.render("vente.test_owl", value)
 
     @http.route(['/vente/command/details/<model("vente.command"):command>'], type='http', auth='public', website=True)
     def article(self, command):

@@ -153,9 +153,10 @@
     </template>
 <!--  test owl  -->
 
-    <template id="test_owl">
+    <template id="test_owl" name="value">
+ <h1>value: </h1><h4><t t-esc="value"/></h4>
         <script src="/vente/static/src/js/owl.js"/>
-<script src="/vente/static/src/js/template.js" type="module"/>
+<script id="searcher" data-search="bananas" src="/vente/static/src/js/template.js" type="module"/>
 
 
 
