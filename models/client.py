@@ -8,6 +8,7 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
     client_name = fields.Char(string='client name')
 
+
 class Client(models.Model):
     _name = 'vente.client'
     _description = 'vente.client'
@@ -27,10 +28,22 @@ class Client(models.Model):
 
     @api.constrains('age')
     def _check_value(self):
-        if not (18< self.age <= 90):
+        if not (18 < self.age <= 90):
             raise ValidationError('incorrect age')
 
     def unlink(self):
         if len(self.command_ids) != 0:
             raise ValidationError('user with commands cannot be deleted. delete your command first')
         return super(Client, self).unlink()
+
+    @api.model
+    def first_cron(self):
+        client = {'name': 'name', 'age': 40, 'email': 'aa@bb.com'}
+        items = self.search([])
+        for item in items:
+            for command in item.command_ids:
+                print(command.code)
+        client_search = self.browse(['name', '=', 'client1'])
+        print(client_search)
+        if not client_search:
+            self.create(client)

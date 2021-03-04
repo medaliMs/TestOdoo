@@ -30,6 +30,7 @@
         'views/client.xml',
         'views/template.xml',
         'views/template_form.xml',
+        'data/cron_data.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
