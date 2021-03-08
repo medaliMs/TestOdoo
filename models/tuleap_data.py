@@ -24,12 +24,27 @@ def get_Data():
     for project in projects_json :
         #project id
         project_id = str(project["additional_informations"]["agiledashboard"]["root_planning"]["milestone_tracker"]["project"]["id"])
+        #print(project_id)
         #project name
         project_name =project["additional_informations"]["agiledashboard"]["root_planning"]["milestone_tracker"]["project"]["label"]
+        #print (project_name)
         url_getuserstories_new=url_getuserstories_base.replace("project_id",project_id)
         userstory_id_list = requests.request("GET", url_getuserstories_new, headers=headers, data=payload)
         userstory_id_json=json.loads(userstory_id_list.text)
+        #print (userstory_id_json)
         userstories_id= str (userstory_id_json[7]["id"])
+        userstories_name= str (userstory_id_json[7]["label"])
+        userstories_name2= str (userstory_id_json[8]["label"])
+        #print(userstories_name2)
+        #print (userstory_id_json[7]["label"])
+        longeur=len(userstory_id_json)
+        #print (longeur)
+        for nb in range (longeur) :
+            #print(userstory_id_json[nb])
+        #    di=userstory_id_json[nb]
+            if userstory_id_json[nb]["label"] == "User Stories":
+                userstories_id= str (userstory_id_json[nb]["id"])
+        #print (userstories_id)
         url_getuserstory_new=url_getuserstory_base.replace("userstories_id",userstories_id)
         userstories_list = requests.request("GET", url_getuserstory_new, headers=headers, data=payload)
         userstories_json = json.loads(userstories_list.text)
@@ -42,8 +57,9 @@ def get_Data():
             url_gettask_new=url_gettask_base.replace("userstory_id",userstory_id)
             tasks_list = requests.request("GET", url_gettask_new, headers=headers, data=payload)
             tasks_json = json.loads(tasks_list.text)
+            tasks =tasks_json["values"][3]["links"]
             #for each task
-            for task in tasks_json["values"][3]["links"] :
+            for task in tasks :
                 #time spent on the task
                 task_time=0
                 #task id
@@ -68,4 +84,3 @@ def get_Data():
 #programme principal
 resultat=get_Data()
 print (resultat)
-print (type(resultat))
