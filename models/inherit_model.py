@@ -16,7 +16,7 @@ class UserStory(models.Model):
         print(tuleap_data.get_Data())
         items_to_create = []
 
-        # item_from_script = tuleap_data.get_Data()
+        # items_from_script = tuleap_data.get_Data()
         items_from_script = [{'userstory_id': '295735', 'userstory_title': 'Gestion utilisateurs', 'project_id': '4571',
                               'project_name': 'SNCF Courrier', 'user_id': 3571, 'time_spent': 2},
                              {'userstory_id': '295736', 'userstory_title': 'Gestion utilisateurs', 'project_id': '4571',
@@ -52,6 +52,7 @@ class UserStory(models.Model):
                 print(item_to_update)
                 item.write(item_to_update)
             else:
+                print('item not found')
                 project = self.env['project.project'].search([('alm_project_id', '=', item['project_id'])])
                 employee = self.env['hr.employee'].search([('alm_user_id', '=', item['user_id'])])
                 print(project)
@@ -83,8 +84,8 @@ class UserStory(models.Model):
                 # item_to_insert["unit_amount"] = item['time_spent']
                 # print(item_to_insert)
                 items_to_create.append(item_to_insert)
-
-        self.create(item_to_insert_or_update)
+        if items_to_create:
+            self.create(items_to_create)
 
 
 class AlmProject(models.Model):
