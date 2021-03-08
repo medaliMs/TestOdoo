@@ -2,11 +2,17 @@
 import re
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
+from odoo.http import request
 
 
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
     client_name = fields.Char(string='client name')
+
+
+# class Timesheet(models.Model):
+#     _inherit = "account.analytic.line"
+#
 
 
 class Client(models.Model):
@@ -47,3 +53,10 @@ class Client(models.Model):
         print(client_search)
         if not client_search:
             self.create(client)
+        test = [
+            {'date': '2021-03-05', 'employee_id': 1, 'project_id': 6, 'task_id': False, 'name': False, 'unit_amount': 0,
+             'user_id': 2}]
+        print(type(test))
+        # [{'date': '2021-03-05', 'employee_id': 1, 'project_id': 6, 'task_id': False, 'name': False, 'unit_amount': 0,
+        #   'user_id': 2}]
+

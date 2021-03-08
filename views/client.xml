@@ -21,7 +21,18 @@
                 </field>
             </field>
         </record>
-        <!--end inherit-->
+
+
+
+
+
+
+
+
+
+
+
+
 
         <!-- explicit list view definition -->
         <record model="ir.ui.view" id="client_tree">

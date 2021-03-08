@@ -99,7 +99,7 @@ class Client(http.Controller):
         values = {'client': client}
         return request.render("vente.client_details", values)
 
-#     @http.route('/module/module/objects/', auth='public')
+    #     @http.route('/module/module/objects/', auth='public')
 #     def list(self, **kw):
 #         return http.request.render('module.listing', {
 #             'root': '/module/module',

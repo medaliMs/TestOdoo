@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+<!--add user story id to the timesheet view-->
+        <record id="timesheet_view_inherit" model="ir.ui.view">
+            <field name="name">account.analytic.line.inherit</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="hr_timesheet.timesheet_view_tree_user"/>
+            <field name="arch" type="xml">
+                <field name="date" position="after">
+                    <field name="user_story_id"/>
+                </field>
+            </field>
+        </record>
+
+
+
+
+                <record id="timesheet_form_inherit" model="ir.ui.view">
+            <field name="name">account.analytic.line.inherit</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_form"/>
+            <field name="arch" type="xml">
+                <field name="project_id" position="after">
+                    <field name="user_story_id"/>
+                </field>
+            </field>
+        </record>
+
+
+
+
+
+<!--        -->
+<!--add alm project id to the project view        -->
+        <record id="project_view_inherit" model="ir.ui.view">
+            <field name="name">project.project.inherit</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.view_project_project_filter"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="alm_project_id"/>
+                </field>
+            </field>
+        </record>
+        <!--end inherit-->
+
+
+                <record id="project_form_inherit" model="ir.ui.view">
+            <field name="name">project.project.inherit</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.project_project_view_form_simplified_footer"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="alm_project_id"/>
+                </field>
+            </field>
+        </record>
+                        <record id="project_form_inherit" model="ir.ui.view">
+            <field name="name">project.project.inherit</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="alm_project_id"/>
+                </field>
+            </field>
+        </record>
+
+
+                <record id="user_view_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <field name="mobile_phone" position="after">
+                    <field name="alm_user_id"/>
+                </field>
+            </field>
+        </record>
+                <record id="user_form_inherit" model="ir.ui.view">
+            <field name="name">hr.employee.inherit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_tree"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="alm_user_id"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</odoo>

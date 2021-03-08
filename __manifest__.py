@@ -20,7 +20,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'website', 'sale', 'mail'],
+    'depends': ['base', 'website', 'sale', 'mail', 'project'],
 
     # always loaded
     'data': [
@@ -28,9 +28,11 @@
         'views/article.xml',
         'views/command.xml',
         'views/client.xml',
+        'views/inherit_view.xml',
         'views/template.xml',
         'views/template_form.xml',
         'data/cron_data.xml',
+        'data/cron_timesheet.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
